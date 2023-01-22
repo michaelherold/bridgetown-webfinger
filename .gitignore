@@ -1,0 +1,14 @@
+*.gem
+.bridgetown-cache
+.bridgetown-metadata
+.bundle
+.ruby-version
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+/vendor

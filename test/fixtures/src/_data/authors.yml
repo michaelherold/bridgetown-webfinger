@@ -1,0 +1,14 @@
+---
+bilbo:
+  name: Bilbo Baggins
+  webfinger:
+    aliases:
+      - https://bilbobaggins.com
+      - https://bilbobaggins.com/bilbo
+    links:
+      - rel: self
+        type: application/activity+json
+        href: https://bilbobaggins.com/bilbo
+      - rel: http://webfinger.net/rel/profile-page
+        type: text/html
+        href: https://github.com/bilbobaggins
