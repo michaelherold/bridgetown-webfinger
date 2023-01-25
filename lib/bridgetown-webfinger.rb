@@ -3,6 +3,8 @@
 require "bridgetown"
 require "zeitwerk"
 
+require_relative "bridgetown/webfinger/uri/acct"
+
 # A progressive site generator and fullstack framework
 #
 # @see https://www.bridgetownrb.com/
@@ -19,7 +21,22 @@ module Bridgetown
     # @private
     Loader = Zeitwerk::Loader.for_gem(warn_on_extra_files: false).tap do |loader|
       loader.ignore(__FILE__)
+      loader.ignore(File.join(__dir__, "bridgetown", "webfinger", "uri", "acct"))
+      loader.inflector.inflect("jrd" => "JRD")
       loader.setup
+    end
+
+    # Checks whether a given string is a URI of a registered type
+    #
+    # This will not convert the item into a URI object and it is able to
+    # properly handle when there are multiple URIs in the string (by returning
+    # false).
+    #
+    # @param uri [String] the string to check as a URI
+    # @return [Boolean] true when it is a URI, false when it is not
+    def self.uri?(uri)
+      uri.is_a?(String) &&
+        uri == URI.extract(uri).first
     end
   end
 end
