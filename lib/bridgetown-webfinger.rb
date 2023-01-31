@@ -21,6 +21,7 @@ module Bridgetown
     # @private
     Loader = Zeitwerk::Loader.for_gem(warn_on_extra_files: false).tap do |loader|
       loader.ignore(__FILE__)
+      loader.ignore(File.join(__dir__, "bridgetown", "webfinger", "initializer"))
       loader.ignore(File.join(__dir__, "bridgetown", "webfinger", "uri", "acct"))
       loader.inflector.inflect("jrd" => "JRD")
       loader.setup
@@ -32,6 +33,9 @@ module Bridgetown
     # properly handle when there are multiple URIs in the string (by returning
     # false).
     #
+    # @since 0.1.0
+    # @api private
+    #
     # @param uri [String] the string to check as a URI
     # @return [Boolean] true when it is a URI, false when it is not
     def self.uri?(uri)
@@ -41,6 +45,4 @@ module Bridgetown
   end
 end
 
-# @param config [Bridgetown::Configuration::ConfigurationDSL]
-Bridgetown.initializer :"bridgetown-webfinger" do |config|
-end
+require_relative "bridgetown/webfinger/initializer"
