@@ -76,11 +76,15 @@ module Bridgetown
       yield if block_given?
     end
 
-    def with_metadata(data = {})
+    def with_data(file, data = {})
       File.write(
-        source_dir("_data/site_metadata.yml"),
+        source_dir("_data/#{file}"),
         data.transform_keys(&:to_s).to_yaml.sub("---\n", "")
       )
+    end
+
+    def with_metadata(data = {})
+      with_data("site_metadata.yml", data)
 
       yield
     end
