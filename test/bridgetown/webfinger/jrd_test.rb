@@ -5,6 +5,8 @@ require "test_helper"
 module Bridgetown
   module Webfinger
     class JRDTest < Minitest::Test
+      include LogHelper
+
       def test_a_fully_appropriate_example
         subject = "acct:bilbo@bagend.com"
         data = {
@@ -108,24 +110,6 @@ module Bridgetown
 
       def metadata(**kwargs)
         HashWithDotAccess::Hash.new(kwargs)
-      end
-
-      def with_log_output
-        original_logger = Bridgetown.logger
-        output = StringIO.new
-        Bridgetown.instance_variable_set(
-          :@logger,
-          Bridgetown::LogAdapter.new(
-            Bridgetown::LogWriter.new.tap do |writer|
-              writer.define_singleton_method(:logdevice) { |_| output }
-            end,
-            :debug
-          )
-        )
-        yield if block_given?
-        output.string
-      ensure
-        Bridgetown.instance_variable_set(:@logger, original_logger)
       end
     end
   end

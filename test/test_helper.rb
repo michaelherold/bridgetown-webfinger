@@ -22,6 +22,8 @@ require "bridgetown-webfinger"
 
 Bridgetown.logger.log_level = :error
 
+Dir["#{__dir__}/support/**/*.rb"].sort.each { |file| require file }
+
 Minitest::Reporters.use! [
   Minitest::Reporters::DefaultReporter.new(
     color: true
@@ -60,6 +62,12 @@ module Bridgetown
 
     def dest_dir(*files)
       File.join(@dest_dir, *files)
+    end
+
+    def maybe_reload_initializer(config)
+      return if config.initializers && config.initializers[:"bridgetown-webfinger"]
+
+      load "bridgetown/webfinger/initializer.rb"
     end
 
     def with_initializer(ruby)
