@@ -2,10 +2,23 @@ require "bundler/gem_tasks"
 require "rake/testtask"
 require "standard/rake"
 
-Rake::TestTask.new(:test) do |t|
-  t.libs.concat(["lib", "test"])
-  t.test_files = FileList["test/**/*_test.rb"]
-  t.warning = false
+namespace :test do
+  desc "Runs unit and integration tests"
+  task all: ["test:unit", "test:integration"]
+
+  Rake::TestTask.new(:unit) do |t|
+    t.libs.concat(["lib", "test"])
+    t.description = "Run unit tests"
+    t.test_files = FileList["test/**/*_test.rb"].exclude("test/integration_test.rb")
+    t.warning = false
+  end
+
+  Rake::TestTask.new(:integration) do |t|
+    t.libs.concat(["lib", "test"])
+    t.description = "Run integration tests"
+    t.test_files = FileList["test/integration_test.rb"]
+    t.warning = false
+  end
 end
 
 namespace :data do
@@ -22,4 +35,4 @@ namespace :data do
   end
 end
 
-task default: [:test, "standard:fix"]
+task default: ["test:all", "standard:fix"]

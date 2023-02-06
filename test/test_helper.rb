@@ -6,6 +6,8 @@ if ENV["CI"] || ENV["COVERAGE"]
   SimpleCov.start do
     add_filter "/test/"
   end
+
+  SimpleCov.command_name "test:unit"
 end
 
 require "tmpdir"
@@ -15,6 +17,9 @@ require "minitest/reporters"
 require "pry"
 require "pry-byebug"
 require "bridgetown"
+require "roda"
+require "rack"
+require "rack/test"
 
 Bridgetown.begin!
 

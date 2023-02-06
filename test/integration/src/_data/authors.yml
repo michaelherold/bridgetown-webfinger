@@ -1,0 +1,15 @@
+---
+bilbo:
+  webfinger:
+    aliases:
+      - https://bagend.social/bilbo
+    links:
+      - rel: http://webfinger.net/rel/avatar
+        href: https://bagend.com/bilbo.png
+        type: image/png
+        properties:
+          http://packetizer.com/ns/name: Bilbo @ Bag End
+        titles:
+          en-us: Bilbo Baggins's Blog
+    properties:
+      http://packetizer.com/ns/name: Bilbo Baggins

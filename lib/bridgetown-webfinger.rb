@@ -21,6 +21,7 @@ module Bridgetown
     # @private
     Loader = Zeitwerk::Loader.for_gem(warn_on_extra_files: false).tap do |loader|
       loader.ignore(__FILE__)
+      loader.ignore(File.join(__dir__, "roda", "plugins", "bridgetown_webfinger"))
       loader.ignore(File.join(__dir__, "bridgetown", "webfinger", "initializer"))
       loader.ignore(File.join(__dir__, "bridgetown", "webfinger", "uri", "acct"))
       loader.inflector.inflect("jrd" => "JRD")
