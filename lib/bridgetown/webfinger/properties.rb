@@ -17,6 +17,8 @@ module Bridgetown
       # @param data [Hash] the data to parse as a properties object
       # @return [Properties, nil] the properties parsed from the data
       def self.parse(data)
+        return unless data
+
         unless data.is_a?(Hash)
           return warn("Webfinger link properties are malformed: #{data.inspect}, ignoring")
         end
