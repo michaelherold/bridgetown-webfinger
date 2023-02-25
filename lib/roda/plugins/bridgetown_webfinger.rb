@@ -68,7 +68,7 @@ class Roda
                   next response.webfinger_error("Missing required parameter: resource", status: 400)
                 end
 
-                if (jrd = webfinger_maybe_jrd(resource, host:, params:, site: bridgetown_site))
+                if (jrd = webfinger_maybe_jrd(resource, host: host, params: params, site: bridgetown_site))
                   response.webfinger_success(jrd)
                 else
                   response.webfinger_error("Unknown resource: #{resource}", status: 404)
