@@ -35,6 +35,20 @@ module Bridgetown
         assert_match %r{rel is missing}, output
       end
 
+      def test_link_without_properties
+        output = with_log_output do
+          link = link(
+            href: "https://example.com/",
+            rel: "http://webfinger.net/rel/profile-page",
+            type: "text/html"
+          )
+
+          assert_nil link.properties
+        end
+
+        refute_match %r{Webfinger link properties}, output
+      end
+
       def test_pruning_malformed_properties
         output = with_log_output do
           link = link(
