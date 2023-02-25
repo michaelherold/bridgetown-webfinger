@@ -23,4 +23,13 @@ Gem::Specification.new do |spec|
   spec.add_dependency "zeitwerk"
 
   spec.add_development_dependency "bundler", ">= 2"
+
+  spec.metadata = {
+    "bug_tracker_uri" => "https://github.com/michaelherold/bridgetown-webfinger/issues",
+    "changelog_uri" => "https://github.com/michaelherold/bridgetown-webfinger/blob/main/CHANGELOG.md",
+    "documentation_uri" => "https://rubydoc.info/gems/bridgetown-webfinger/#{Bridgetown::Webfinger::VERSION}",
+    "homepage_uri" => "https://github.com/michaelherold/bridgetown-webfinger",
+    "rubygems_mfa_required" => "true",
+    "source_code_uri" => "https://github.com/michaelherold/bridgetown-webfinger"
+  }
 end
