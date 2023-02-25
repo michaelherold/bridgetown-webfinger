@@ -181,7 +181,7 @@ PLATFORMS
 
 DEPENDENCIES
   bridgetown-webfinger!
-  bundler (>= 1.16)
+  bundler (>= 2)
   minitest
   minitest-reporters
   pry

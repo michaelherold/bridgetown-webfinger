@@ -16,11 +16,11 @@ Gem::Specification.new do |spec|
   spec.files += Dir["lib/**/*.rb"]
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = ">= 2.7.0"
+  spec.required_ruby_version = ">= 3.0.0"
 
   spec.add_dependency "bridgetown", ">= 1.2", "< 2.0"
   spec.add_dependency "uri", ">= 0.12.0"
   spec.add_dependency "zeitwerk"
 
-  spec.add_development_dependency "bundler", ">= 1.16"
+  spec.add_development_dependency "bundler", ">= 2"
 end
