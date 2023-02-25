@@ -49,7 +49,7 @@ module Bridgetown
     end
 
     def teardown
-      FileUtils.remove_entry(@source_dir)
+      FileUtils.remove_entry(@root_dir)
       FileUtils.remove_entry(@dest_dir)
     end
 
