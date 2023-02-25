@@ -89,6 +89,11 @@ GEM
       activesupport (>= 5.0.0, < 8.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    inch (0.8.0)
+      pry
+      sparkr (>= 0.2.0)
+      term-ansicolor
+      yard (~> 0.9.12)
     json (2.6.3)
     kramdown (2.4.0)
       rexml
@@ -160,12 +165,18 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
+    sparkr (0.4.1)
     standard (1.22.1)
       language_server-protocol (~> 3.17.0.2)
       rubocop (= 1.42.0)
       rubocop-performance (= 1.15.2)
+    sync (0.5.0)
+    term-ansicolor (1.7.1)
+      tins (~> 1.0)
     thor (1.2.1)
     tilt (2.0.11)
+    tins (1.32.1)
+      sync
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.8.0)
@@ -181,7 +192,8 @@ PLATFORMS
 
 DEPENDENCIES
   bridgetown-webfinger!
-  bundler (>= 1.16)
+  bundler (>= 2)
+  inch
   minitest
   minitest-reporters
   pry

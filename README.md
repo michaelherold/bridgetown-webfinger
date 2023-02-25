@@ -9,7 +9,7 @@ This plugin allows for hosting Webfinger lookups on your website for [`acct:` UR
 [1]: https://www.bridgetownrb.com
 [2]: https://webfinger.net/
 [3]: https://indieweb.org/
-[4]: https://datatracker.ietf.org/doc/html/rfc2396
+[4]: https://datatracker.ietf.org/doc/html/rfc7565
 [5]: https://joinmastodon.org/
 [6]: https://pleroma.social/
 [7]: https://joinpeertube.org/
