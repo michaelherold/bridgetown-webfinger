@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: Lint Ruby files
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.0"
+      - uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ matrix.ruby }}-${{ hashFiles('Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-${{ matrix.ruby }}-
+      - name: Run Standard
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle check || bundle install --jobs 4 --retry 3
+          bundle exec standardrb
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby:
+          - "3.0"
+          - "3.1"
+          - "3.2"
+    name: Test bridgetown-webfinger on Ruby ${{ matrix.ruby }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ matrix.ruby }}-${{ hashFiles('Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-${{ matrix.ruby }}-
+      - name: Run test suite
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle check || bundle install --jobs 4 --retry 3
+          bundle exec rake test:all

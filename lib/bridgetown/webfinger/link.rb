@@ -106,7 +106,7 @@ module Bridgetown
       #
       # @return [Hash] the Link as a JSON-compatible Hash
       def to_h
-        result = {rel:}
+        result = {rel: rel}
         result[:href] = href if href
         result[:properties] = properties if properties
         result[:titles] = titles if titles

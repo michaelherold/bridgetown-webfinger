@@ -106,7 +106,7 @@ module Bridgetown
         def initialize(site, account:, data:, host:)
           super(site, __dir__, "/.well-known", "webfinger", from_plugin: true)
 
-          @subject = URI::Acct.build({account:, host:}).to_s
+          @subject = URI::Acct.build({account: account, host: host}).to_s
           @jrd = JRD.parse(@subject, data.webfinger)
 
           self.content = JSON.pretty_generate(@jrd.to_h)

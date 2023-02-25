@@ -153,7 +153,7 @@ module Bridgetown
       #
       # @return [Hash] the JRD as a JSON-compatible Hash
       def to_h
-        result = {subject:}
+        result = {subject: subject}
         result[:aliases] = aliases if aliases
         result[:links] = links.map(&:to_h) if links
         result[:properties] = properties.to_h if properties
