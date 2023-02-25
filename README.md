@@ -66,6 +66,21 @@ end
 
 Bridgetown will now generate a `.well-known/webfinger` file using your first author's information when building the site.
 
+#### Deploying to Netlify
+
+To have the correct headers for your static file, add the following to your `netlify.toml`.
+
+```toml
+[[headers]]
+for = "/.well-known/webfinger"
+
+[headers.values]
+Access-Control-Allow-Origin = "*"
+Content-Type = "application/jrd+json"
+```
+
+See [the allowed hosts section below](#allowed-hosts) for more information about the access control header.
+
 ### Dynamic mode
 
 To use dynamic mode, configure your [authors data file](#authors-data-file) and add the following to your `config/initializers.rb` file:
