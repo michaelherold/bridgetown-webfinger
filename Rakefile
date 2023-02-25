@@ -1,4 +1,5 @@
 require "bundler/gem_tasks"
+require "inch/rake"
 require "rake/testtask"
 require "standard/rake"
 
@@ -28,6 +29,8 @@ task :test do
   Rake::Task["test:all"].invoke
 end
 
+Inch::Rake::Suggest.new(:inch)
+
 namespace :data do
   desc "Pull the list of current registered link relations from the IANA database"
   task :link_relations do
@@ -42,4 +45,4 @@ namespace :data do
   end
 end
 
-task default: ["test", "standard:fix"]
+task default: ["test", "standard:fix", "inch"]
